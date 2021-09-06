@@ -1,0 +1,24 @@
+<% layout('layout') -%>
+
+<style>
+    
+</style>
+<script>
+    $(function(){
+        $('#qrcode').qrcode({
+            width: 200,
+            height: 200,
+            text: '<%=apk_url%>'
+        });
+    });
+</script>
+
+<div id="content">
+    <div id="gridTable2" class="item W95p H95p BGW">
+            
+            <div id="qrcode" class="MgT200 item W50p H50p "></div>
+    </div>
+    
+
+
+</div>

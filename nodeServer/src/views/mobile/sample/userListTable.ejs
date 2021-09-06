@@ -1,0 +1,25 @@
+<table class="W100p">
+  <colgroup>
+    <col class="W40p"/>
+    <col/>
+  </colgroup>
+  <thead>
+    <tr>
+      <td>User Id</td>
+      <td>User Name</td>
+    </tr>
+  </thead>
+  <tbody>
+<%
+  for(var i=0; i<resultList.length; i++){
+%>
+    <tr>
+      <td><%=resultList[i].USER_ID%></td>
+      <td><%=resultList[i].USER_NAME%></td>
+    </tr>
+<%
+  }
+%>
+
+  </tbody>
+</table>

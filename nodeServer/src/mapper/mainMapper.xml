@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mainMapper">
+
+  <!--로그인-->
+  <select id="getLogin">
+   <![CDATA[
+      SELECT 
+          USER_ID, 
+          USER_NAME,
+          (CASE WHEN USER_PWD <> CONVERT (VARCHAR (256), HASHBYTES ('SHA1', #{USER_PWD}), 1)  THEN 0 ELSE 1 END) CHECK_PWD
+        FROM 
+          ENV_USER 
+        WHERE 
+          USER_ID = #{USER_ID} 
+      AND USER_TYPE IN ('U', 'S')
+    ]]>
+  </select>
+
+  <!-- 메뉴 불러오기 트리구조-->
+  <select id="getMenu">
+      SELECT 'P' AS STEP , 'P1' as ID , '' as P_ID ,   'SAMPLE1' AS NM , '' AS URL UNION ALL
+      SELECT 'C' AS STEP , 'P1_1' as ID ,  'P1' as P_ID , '사용자조회' AS NM , '/m/user' AS URL UNION ALL
+      SELECT 'P' AS STEP , 'P4' as ID , '' as P_ID ,   'SAMPLE2' AS NM , '' AS URL UNION ALL
+      SELECT 'C' AS STEP , 'P4_1' as ID ,  'P4' as P_ID , '샘플' AS NM , '/m/sample' AS URL
+  </select>
+  
+  <!-- 코드 가져오기 -->
+  <select id="getCode">
+    SELECT C_NAME AS CODE_NM, 
+           C_CODE AS CODE 
+    FROM   ENV_CODE WHERE C_ID = #{CODE_ID}
+  </select>
+
+
+</mapper>
+
