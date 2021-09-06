@@ -1,0 +1,51 @@
+
+<%  
+for(var i=0; i<menuList.length; i++)
+{
+  if(menuList[i].STEP == "P")
+  { 
+    if( i != 0)
+    {
+%>
+      </ul>
+<%    
+    }
+%>
+      <ul class="main" >
+      <span class="fsh4"> <%=menuList[i].NM%> </span>
+<%
+  };
+  if(menuList[i].STEP == "C")
+  {
+%>
+       <li class="sub AC" style="display:none;">
+        <a href="<%=menuList[i].URL%>" style="cursor:pointer;" class="fsh3" ><%=menuList[i].NM%></a> 
+       </li>
+<%
+  }else{
+%>
+        
+<%
+  };
+};
+%>
+
+<script>
+    $(".main").click(function(){
+        if($(this).find(".sub").is(":visible")){
+            $(this).find(".sub").slideUp();
+        }
+        else{
+            $(this).find(".sub").slideDown();
+        }
+    })
+</script>
+<style>
+ ul 
+ {
+   list-style: none;
+   padding-left: 0px;
+ }
+ a{ color: #ffffff; text-decoration: none;}
+
+</style>

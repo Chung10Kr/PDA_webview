@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="fcmMapper">
+
+  <!-- FCM info insert -->
+  <insert id="insertFcm">
+    MERGE INTO FCMTOKEN AS A
+      USING (SELECT #{TOKEN} AS TOKEN ) AS B
+      ON (A.TOKEN = B.TOKEN)
+      WHEN MATCHED THEN
+          UPDATE SET USER_ID=#{USER_ID} , UPDATE_DATE=GETDATE()
+      WHEN NOT MATCHED THEN
+          INSERT (TOKEN , USER_ID , CREATE_DATE) VALUES ( #{TOKEN} , #{USER_ID} , GETDATE());
+  </insert>
+  <delete id="deleteFcm">
+    DELETE FROM FCMTOKEN
+    WHERE USER_ID = #{USER_ID}
+  </delete>
+  <!-- Fcm List Select -->
+  <select id="selectFcm">
+     SELECT TOKEN , USER_ID FROM FCMTOKEN 
+  </select>
+  
+</mapper>

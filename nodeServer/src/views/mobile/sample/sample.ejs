@@ -1,0 +1,94 @@
+<% layout('../layout') -%>
+
+<script>
+    $(function(){
+
+      //달력 불러오기
+      gfnInitDatePickerTwo();
+      gfnSetDatePickerTwo($("#birthDay"));
+      
+      //코드값 불러오기
+      setComboBoxList("A", "code1", {CODE_ID : 'HOLIDAY_LIST'} );
+      setComboBoxList("A", "code2", {CODE_ID : 'ASM_IO_TYPE'}, true, '1');
+    });
+
+    // 안드로이드 라벨 스캔시 실행 함수
+    function appScan(lbl_id){
+        alert( lbl_id );
+
+        /*
+        true return -> OK 사운드
+        false return -> NG 사운드
+        */
+        return true;
+    };
+
+    function fnCall(){
+      var url = "/m/sample/Ajax";
+      var params = {
+        USER_NAME : gfnIdVal("USER_NAME")
+      };
+      var sucessFunc = function(data) {
+        alert( data )
+      };
+      
+      ajaxCall(url, params, sucessFunc);
+    };
+
+    function fnVaildation(){
+      var frm = document.editForm;
+      if( !gfnValidate(frm) ){
+        return false;
+      };
+      alert("done:)");
+    };
+    function fnAlert(){
+      alert("안녕하세요");
+    }
+    function fnConfirm(){
+      if( !confirm("저장하시겠습니까?") ) return false;
+      alert( "done :)" )
+    }
+    function androidCall(){
+      Android.showToast("웹뷰에서 메세지를 보냈숩니다. ㅎㅎ")
+    }
+</script>
+
+<div id="content">
+    <h2> - Ajax 호출 - </h2>
+
+    <input type="text" id="USER_NAME" name="USER_NAME" class="AC" placeholder="이름을 입력해주세요." maxlength="15">
+    <button class="btn_1 MgT10" onclick="fnCall();">Ajax Call</button>
+
+
+    <h2> - Data vaildation - </h2>
+    <form id="editForm" name="editForm">
+      <input type="text" name="data" class="checkNull" placeholder="필수입력" title="필수입력">
+      <input type="text" name="data1" class="intCheck" placeholder="숫자만" title="숫자">
+      <input type="text" name="data2" class="floatCheck" placeholder="소수점" title="소수점">
+      <input type="text" name="data3" class="notHangul" placeholder="영문숫자" title="영문숫자">
+    </form>
+    <button class="btn_1 MgT10" onclick="fnVaildation();">vaildation</button>
+
+    <h2> - Date1 - </h2>
+    <input type="text" id="startDay" name="startDay" class="W35p" readonly="readonly" > ~
+    <input type="text" id="endDay" name="endDay" class="W35p" readonly="readonly">
+
+    <h2> - Date2 - </h2>
+    <input type="text" id="birthDay" name="birthDay" class="W35p" readonly="readonly" value="1993-07-07" >
+    
+    <h2> - Code - </h2>
+    <select id="code1" class="W100p"></select>
+    <select id="code2" class="W100p"></select>
+
+    <h2> - alert, confirm - </h2>
+    <button class="btn_1 MgT10" onclick="fnAlert();">alert</button>
+    <button class="btn_1 MgT10" onclick="fnConfirm();">confirm</button>
+
+    <h2> - 안드로이드 호출 - </h2>
+    <button class="btn_1 MgT10" onclick="androidCall();">Call Android Method</button>
+    <!-- 이사님 이거는 안드로이드 소스 webViewActivity에서 webViewInterface를 보시면 됩니다. :) -->
+    
+</div>
+
+
