@@ -34,7 +34,7 @@ var database = async function( mapperNm , queryId ,param){
 
 	let result;
 	try {
-		let pool = await sql.connect(config.db_url);
+		let pool = await sql.connect(config.sqlConfig);
 			mybatisMapper.createMapper([mapperPath]);
 		var format = {language: 'sql', indent: '  '};
 		var query = mybatisMapper.getStatement(mapperNm,queryId, param, format);

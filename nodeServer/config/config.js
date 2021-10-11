@@ -5,8 +5,8 @@ var property = require("./property");
 
 module.exports = {
 	server_port:property.server_port,
-	db_url:property.db_url,
-	
+	sqlConfig:property.sqlConfig,
+
 	//파일 위치 (%소스 위치 아님)
 	files_location : property.files_location,
 	//파일 업로드 위치 
