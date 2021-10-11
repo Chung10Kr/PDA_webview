@@ -51,6 +51,9 @@ module.exports = {
 			{file:'../src/routes/mobile', path:'/m/main', method:'main', type:'get'},
 			{file:'../src/routes/mobile', path:'/m/menu', method:'menu', type:'post'},
 
+			/* Web RTC */
+			{file:'../src/routes/utils/rtc', path:'/m/rtc', method:'getRtc', type:'get'},
+
 			/*Sample*/
 			{file:'../src/routes/sample', path:'/m/user',       method:'userList', type:'get'},
 			{file:'../src/routes/sample', path:'/m/user/table', method:'userListTable', type:'post'},

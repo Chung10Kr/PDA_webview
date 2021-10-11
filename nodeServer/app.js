@@ -1,7 +1,8 @@
 // Express 기본 모듈 불러오기
 var express = require('express')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , SocketIO = require('socket.io');
 
 // Express의 미들웨어 불러오기
 var bodyParser = require('body-parser')
@@ -171,7 +172,29 @@ app.on('close', function () {
 	console.log("Express 서버 객체가 종료됩니다.");
 });
 
-// 시작된 서버 객체를 리턴받도록 합니다.
-var server = http.createServer(app).listen(app.get('port'), function(){
-	console.log('서버가 시작되었습니다. 포트 : ' + app.get('port'));
+const httpServer = http.createServer(app);
+const wsServer = SocketIO(httpServer);
+
+
+wsServer.on("connection", (socket) => {
+  socket.on("join_room", (roomName) => {
+    socket.join(roomName);
+    socket.to(roomName).emit("welcome");
+  });
+  socket.on("offer", (offer, roomName) => {
+    socket.to(roomName).emit("offer", offer);
+  });
+  socket.on("answer", (answer, roomName) => {
+    socket.to(roomName).emit("answer", answer);
+  });
+  socket.on("ice", (ice, roomName) => {
+    socket.to(roomName).emit("ice", ice);
+  });
 });
+
+
+// 시작된 서버 객체를 리턴받도록 합니다.
+const handleListen = () => console.log(`Listening on http://localhost:3000`);
+var server = httpServer.listen(3000, handleListen);
+
+

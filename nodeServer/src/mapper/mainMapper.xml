@@ -21,6 +21,7 @@
   <select id="getMenu">
       SELECT 'P' AS STEP , 'P1' as ID , '' as P_ID ,   'SAMPLE1' AS NM , '' AS URL UNION ALL
       SELECT 'C' AS STEP , 'P1_1' as ID ,  'P1' as P_ID , '사용자조회' AS NM , '/m/user' AS URL UNION ALL
+      SELECT 'C' AS STEP , 'P1_2' as ID ,  'P1' as P_ID , '화상' AS NM , '/m/rtc' AS URL UNION ALL
       SELECT 'P' AS STEP , 'P4' as ID , '' as P_ID ,   'SAMPLE2' AS NM , '' AS URL UNION ALL
       SELECT 'C' AS STEP , 'P4_1' as ID ,  'P4' as P_ID , '샘플' AS NM , '/m/sample' AS URL
   </select>

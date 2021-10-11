@@ -12,7 +12,7 @@ public interface commonConstants {
     public final static String APK_VERSION="4";
 
     /*서버 아이피*/
-    public final static String SERVER_IP="http://192.168.0.11:2000";
+    public final static String SERVER_IP="http://192.168.45.111:3000";
 
     /*회사 이름*/
     public final static String COMPANY_NAME="Hitec";
