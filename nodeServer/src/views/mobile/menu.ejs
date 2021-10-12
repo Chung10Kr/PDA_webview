@@ -12,14 +12,14 @@ for(var i=0; i<menuList.length; i++)
     }
 %>
       <ul class="main" >
-      <span class="fsh4"> <%=menuList[i].NM%> </span>
+      <span class="fsh4" > <%=menuList[i].NM%> </span>
 <%
   };
   if(menuList[i].STEP == "C")
   {
 %>
        <li class="sub AC" style="display:none;">
-        <a href="<%=menuList[i].URL%>" style="cursor:pointer;" class="fsh3" ><%=menuList[i].NM%></a> 
+        <a href="" onclick="goMenu( '<%=menuList[i].URL%>' );return false;" style="cursor:pointer;" class="fsh3" ><%=menuList[i].NM%></a> 
        </li>
 <%
   }else{
@@ -46,6 +46,11 @@ for(var i=0; i<menuList.length; i++)
    list-style: none;
    padding-left: 0px;
  }
- a{ color: #ffffff; text-decoration: none;}
+
 
 </style>
+<script>
+  function goMenu(url){
+    location.href = url;
+  };
+</script>

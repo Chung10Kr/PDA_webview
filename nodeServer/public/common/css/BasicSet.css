@@ -45,6 +45,9 @@
        url(/public/common/css/font/notokr-black.ttf) format('truetype');
 }
 
+a:link { color:#ffffff; text-decoration: none;}
+a:visited { color:#ffffff; text-decoration: none;}
+a:hover { color:#ffffff; text-decoration: none;}
 
 .vc{vertical-align: middle;}
 .tc{text-align: center;}

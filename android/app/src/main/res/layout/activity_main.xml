@@ -25,7 +25,7 @@
         android:id="@+id/userId"
         android:layout_centerHorizontal="true"
         android:hint="@string/userId"
-        android:text=""
+        android:text="admin"
         android:layout_marginTop="151dp"
         android:maxLength="30"
         />
@@ -37,7 +37,7 @@
         android:id="@+id/userPwd"
         android:layout_centerHorizontal="true"
         android:hint="@string/userPwd"
-        android:text=""
+        android:text="1234"
         android:layout_below="@+id/userId"
         android:maxLength="30"
         />
